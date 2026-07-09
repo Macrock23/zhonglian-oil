@@ -19,13 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-NOTE ON DATA / 資料說明:
-The MIT license above covers the SOFTWARE (source code and page structure) only.
-The dataset presented by this tool is compiled from PUBLIC announcements of the
-Taiwan Food and Drug Administration (TFDA / 衛生福利部食品藥物管理署) "中聯油脂案專區".
-Copyright and any open-data terms of that data remain with the originating
-authority; this project merely organizes and presents it. Always refer to the
-official TFDA announcements as the authoritative source.
