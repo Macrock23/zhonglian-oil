@@ -175,7 +175,7 @@ th{background:var(--surf);position:sticky;top:0;font-size:11px;color:var(--ink3)
 .infopad ul{padding-left:20px;margin:6px 0}
 .infopad li{margin-bottom:6px}
 .infobox{background:var(--surf2);border:1px solid var(--bd);border-radius:10px;padding:12px 14px;margin:12px 0;font-size:13px;line-height:1.7}
-@media(max-width:900px){.pages{height:auto}.page{flex-direction:column;height:auto}.side{width:100%;border-right:none;border-bottom:1px solid var(--bd)}#page-map .content{height:66vh}.content{overflow:visible}.detail{width:100%;border-left:none;border-top:1px solid var(--bd)}.resizer{display:none}.footer{height:auto;padding:6px 16px}}@media(max-width:560px){header h1{font-size:15px}header .sub{display:none}.tab{padding:10px 10px;font-size:13px}.tbtn{padding:9px 13px}.hbtns{gap:6px}}@media print{:root{--page:#fff;--surf:#fff;--surf2:#fff;--surf3:#fff;--ink:#000;--ink2:#222;--ink3:#555;--bd:#bbb}*{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}#themeBtn,.resizer,.tbtn,#disc-modal{display:none !important}.pages,.page,.content,.detail,.side{height:auto !important;max-height:none !important;overflow:visible !important}#page-map{display:none !important}.footer{position:static}}.hbtns{display:flex;gap:8px;flex:none}#page-term th{cursor:pointer;user-select:none}#page-term th:hover{color:var(--ts)}[data-fontscale="lg"] .item,[data-fontscale="lg"] .lrow,[data-fontscale="lg"] #tbody td,[data-fontscale="lg"] .infopad,[data-fontscale="lg"] .infopad li,[data-fontscale="lg"] .infobox,[data-fontscale="lg"] .disc-body li,[data-fontscale="lg"] .csub,[data-fontscale="lg"] #cnote,[data-fontscale="lg"] .footer,[data-fontscale="lg"] header .sub,[data-fontscale="lg"] .chipbtn,[data-fontscale="lg"] .catbtn,[data-fontscale="lg"] .nm,[data-fontscale="lg"] .mt{font-size:15px !important;line-height:1.7 !important}
+@media(max-width:900px){.pages{height:auto}.page{flex-direction:column;height:auto}.side{width:100%;border-right:none;border-bottom:1px solid var(--bd)}#page-map .content{height:66vh}.content{overflow:visible}.detail{width:100%;border-left:none;border-top:1px solid var(--bd)}.resizer{display:none}.footer{height:auto;padding:6px 16px}}@media(max-width:560px){header h1{font-size:15px}header .sub{display:none}.tab{padding:10px 10px;font-size:13px}.tbtn{padding:9px 13px}.hbtns{gap:6px}}@media print{:root{--page:#fff;--surf:#fff;--surf2:#fff;--surf3:#fff;--ink:#000;--ink2:#222;--ink3:#555;--bd:#bbb}*{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}#themeBtn,.resizer,.tbtn,#disc-modal{display:none !important}.pages,.page,.content,.detail,.side{height:auto !important;max-height:none !important;overflow:visible !important}#page-map{display:none !important}.footer{position:static}}.hbtns{display:flex;gap:8px;flex:none}#page-term th{cursor:pointer;user-select:none}#page-term th:hover{color:var(--ts)}[data-fontscale="lg"] .item,[data-fontscale="lg"] .lrow,[data-fontscale="lg"] #tbody td,[data-fontscale="lg"] .infopad,[data-fontscale="lg"] .infopad li,[data-fontscale="lg"] .infobox,[data-fontscale="lg"] .disc-body li,[data-fontscale="lg"] .csub,[data-fontscale="lg"] #cnote,[data-fontscale="lg"] .footer,[data-fontscale="lg"] header .sub,[data-fontscale="lg"] .chipbtn,[data-fontscale="lg"] .catbtn,[data-fontscale="lg"] .nm,[data-fontscale="lg"] .mt{font-size:15px !important;line-height:1.7 !important}#histbox{margin-top:6px}.histrow{display:flex;align-items:center;gap:6px;padding:5px 6px;border-radius:6px;cursor:pointer;font-size:12px}.histrow:hover{background:var(--surf2)}.htag{flex:none;font-size:10px;color:var(--ts);border:1px solid var(--bd);border-radius:4px;padding:1px 5px}.hl{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.hts{flex:none;color:var(--ink3);font-size:11px}[data-fontscale="lg"] .histrow{font-size:14px}
 </style>
 <script>(function(){var t;try{t=localStorage.getItem('zl_theme');}catch(e){}if(!t)t=(window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light';document.documentElement.setAttribute('data-theme',t);})();</script>
 </head>
@@ -212,6 +212,7 @@ th{background:var(--surf);position:sticky;top:0;font-size:11px;color:var(--ink3)
       <div id="qbrands" class="chiprow"></div>
       <div class="slab">依類別瀏覽（點選在中間顯示）</div>
       <div id="cattree"></div>
+      <div id="histbox"></div>
       <div id="cnote">品名比對僅供快速參考，非官方判定。請核對外包裝<b>批號與有效日期</b>，並以<a href="https://www.fda.gov.tw/tc/site.aspx?sid=13702" target="_blank">食藥署專區</a>最新公告為準。</div>
     </div>
     <div class="resizer" data-target="side"></div>
@@ -414,7 +415,7 @@ function detailHtml(it){
   else{ rows=r('類別',it.cat)+r('來源業者/品牌',it.source)+r('縣市',it.county)+r(it.kind=='oil'?'受影響批號':'官方標示效期/狀態',it.status); }
   return '<div class="dname" style="border-top:4px solid '+color+';padding-top:10px">'+esc(it.name)+'</div>'+rows+'<div class="dact">'+esc(actText(it))+'</div>'+(it.kind=='biz'?'<button class="btn" style="margin-top:12px" onclick="switchTab(\'map\')">在業者地圖查看位置 →</button>':'');
 }
-function selectItem(i){selIdx=i;var it=CRES[i];document.querySelectorAll('#clist .lrow').forEach(function(e){e.classList.toggle('sel',(+e.getAttribute('data-i'))===i);});document.getElementById('cdetail').innerHTML=it?detailHtml(it):detailEmpty();}
+function selectItem(i){selIdx=i;var it=CRES[i];document.querySelectorAll('#clist .lrow').forEach(function(e){e.classList.toggle('sel',(+e.getAttribute('data-i'))===i);});document.getElementById('cdetail').innerHTML=it?detailHtml(it):detailEmpty();if(it)addHist('商品',it.name,it.source);}
 function lrow(it){var k=itemKey(it);return '<div class="lrow" data-i="'+it.__i+'" onclick="selectItem('+it.__i+')"><input type="checkbox" class="lchk" '+(CART[k]?'checked':'')+' onclick="event.stopPropagation()" onchange="toggleCart('+it.__i+')"><span class="ln">'+hl(it.name,CKWS)+'</span></div>';}
 function renderCheck(){
   var raw=(document.getElementById('cq').value||'').trim();
@@ -464,7 +465,7 @@ function buildBrands(){
   rows.sort(function(a,b){return b.c-a.c;});
   document.getElementById('qbrands').innerHTML=rows.map(function(r){return '<button class="chipbtn" data-brand="'+esc(r.kw)+'" onclick="pickBrand(this.getAttribute(\'data-brand\'))">'+esc(r.label)+' <span class="cnt">'+r.c+'</span></button>';}).join('');
 }
-function pickBrand(t){document.getElementById('cq').value=t;activeCat='';activeItem='';browseTarget=null;activeBrand=t;renderCheck();scrollToResults();}
+function pickBrand(t){document.getElementById('cq').value=t;activeCat='';activeItem='';browseTarget=null;activeBrand=t;renderCheck();scrollToResults();addHist('品牌',t);}
 function buildTree(){
   var all={};IDX.filter(function(it){return it.kind!=='biz';}).forEach(function(it){(all[it.cat]=all[it.cat]||[]).push(it);});
   var cats=Object.keys(all).sort(function(a,b){if(a==='受影響店家/通路')return 1;if(b==='受影響店家/通路')return -1;return all[b].length-all[a].length;});
@@ -472,7 +473,7 @@ function buildTree(){
 }
 function updateTree(){document.querySelectorAll('#cattree .catbtn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-cat')===activeTab);});}
 function updateBrandChips(){document.querySelectorAll('#qbrands .chipbtn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-brand')===activeBrand);});}
-function browseCat(cat){document.getElementById('cq').value='';activeCat='';activeItem='';activeBrand='';tabDim='cat';browseTarget=cat;renderCheck();scrollToResults();}
+function browseCat(cat){document.getElementById('cq').value='';activeCat='';activeItem='';activeBrand='';tabDim='cat';browseTarget=cat;renderCheck();scrollToResults();addHist('類別',cat);}
 function clearCheck(){document.getElementById('cq').value='';activeCat='';activeItem='';browseTarget=null;activeBrand='';renderCheck();}
 var CART={};
 function itemKey(it){return it.name+'||'+it.source;}
@@ -483,8 +484,18 @@ function removeCartAt(idx){var k=Object.keys(CART)[idx];if(k){delete CART[k];sav
 function clearCart(){CART={};saveCart();renderCart();refreshRowChecks();}
 function refreshRowChecks(){document.querySelectorAll('#clist .lrow').forEach(function(row){var it=CRES[+row.getAttribute('data-i')];var chk=row.querySelector('.lchk');if(it&&chk)chk.checked=!!CART[itemKey(it)];});}
 function copyCart(){var t=Object.keys(CART).map(function(k){return CART[k].name+'（'+CART[k].source+'）';}).join('\n');if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t);}var el=document.getElementById('cartcopy');if(el){el.textContent='已複製';setTimeout(function(){el.textContent='複製';},1500);}}
-function renderCart(){var keys=Object.keys(CART);var el=document.getElementById('mycart');if(!el)return;if(keys.length===0){el.innerHTML='<div class="carthd">我的清單（0）</div><div class="carthint">勾選你買過的商品（中間清單每列前方的方框），會列在這裡，方便帶去退貨核對。</div>';return;}el.innerHTML='<div class="carthd">我的清單（'+keys.length+'）<span class="lk" onclick="clearCart()">清空</span><span class="lk" id="cartcopy" onclick="copyCart()">複製</span></div>'+keys.map(function(k,idx){var it=CART[k];return '<div class="cartrow"><span>'+esc(it.name)+' <span style="color:var(--ink3)">· '+esc(it.source)+'</span></span><span class="cx" onclick="removeCartAt('+idx+')">✕</span></div>';}).join('');}
-loadCart();buildBrands();buildTree();renderCheck();renderCart();
+function renderCart(){var keys=Object.keys(CART);var el=document.getElementById('mycart');if(!el)return;if(keys.length===0){el.innerHTML='<div class="carthd">我的清單（0）</div><div class="carthint">勾選你買過的商品（中間清單每列前方的方框），會列在這裡，方便帶去退貨核對。</div>';return;}el.innerHTML='<div class="carthd">我的清單（'+keys.length+'）<span class="lk" onclick="clearCart()">清空</span><span class="lk" id="cartcopy" onclick="copyCart()">複製</span><span class="lk" onclick="downloadCart()">下載</span></div>'+keys.map(function(k,idx){var it=CART[k];return '<div class="cartrow"><span>'+esc(it.name)+' <span style="color:var(--ink3)">· '+esc(it.source)+'</span></span><span class="cx" onclick="removeCartAt('+idx+')">✕</span></div>';}).join('');}
+
+var HIST=[];
+function loadHist(){try{HIST=JSON.parse(localStorage.getItem('zl_history')||'[]')||[];}catch(e){HIST=[];}}
+function saveHist(){try{localStorage.setItem('zl_history',JSON.stringify(HIST.slice(0,25)));}catch(e){}}
+function addHist(type,label,source){if(!label)return;var key=type+'|'+label+'|'+(source||'');HIST=HIST.filter(function(h){return (h.t+'|'+h.l+'|'+(h.s||''))!==key;});HIST.unshift({t:type,l:label,s:source||'',ts:Date.now()});if(HIST.length>25)HIST=HIST.slice(0,25);saveHist();renderHist();}
+function fmtHt(ts){try{var d=new Date(ts),p=function(n){return (n<10?'0':'')+n;};return (d.getMonth()+1)+'/'+d.getDate()+' '+p(d.getHours())+':'+p(d.getMinutes());}catch(e){return '';}}
+function runHist(idx){var h=HIST[idx];if(!h)return;if(h.t==='品牌'){pickBrand(h.l);}else if(h.t==='類別'){browseCat(h.l);}else{document.getElementById('cq').value=h.l;activeCat='';activeItem='';browseTarget=null;activeBrand='';renderCheck();scrollToResults();}}
+function clearHist(){HIST=[];saveHist();renderHist();}
+function renderHist(){var el=document.getElementById('histbox');if(!el)return;if(!HIST.length){el.innerHTML='';return;}el.innerHTML='<div class="slab">最近查詢<span class="lk" onclick="clearHist()" style="float:right;font-weight:400">清除</span></div>'+HIST.slice(0,12).map(function(h,i){return '<div class="histrow" onclick="runHist('+i+')" title="點一下重新查詢"><span class="htag">'+esc(h.t)+'</span><span class="hl">'+esc(h.l)+(h.s?' <span style="color:var(--ink3)">·'+esc(h.s)+'</span>':'')+'</span><span class="hts">'+fmtHt(h.ts)+'</span></div>';}).join('');}
+function downloadCart(){var keys=Object.keys(CART);if(!keys.length)return;var L=[];L.push('中聯油脂問題油品 · 我的退貨核對清單');L.push('產生時間：'+new Date().toLocaleString('zh-TW'));L.push('資料以食藥署官方公告為準；第三方整理、非官方判定。');L.push('');keys.forEach(function(k,i){var it=CART[k];L.push((i+1)+'. '+it.name+'（'+it.source+'）');});L.push('');L.push('查詢工具：https://macrock23.github.io/zhonglian-oil/　食安專線 1919');var blob=new Blob([L.join('\r\n')],{type:'text/plain;charset=utf-8'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='退貨核對清單.txt';document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},120);}
+loadCart();loadHist();buildBrands();buildTree();renderCheck();renderCart();renderHist();
 document.getElementById('cq').addEventListener('input',function(){activeCat='';activeItem='';browseTarget=null;activeBrand='';renderCheck();});
 function initResizers(){
   document.querySelectorAll('.resizer').forEach(function(rz){
