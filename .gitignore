@@ -1,0 +1,23 @@
+# 建置備份與暫存（開發過程產物，不需版控）
+build_html.bak*.py
+patch*.py
+gen_og.py
+_lastscript.js
+__pycache__/
+
+# 驗證用截圖／暫存
+*.jpeg
+*.png
+!og.png
+.playwright-mcp/
+.remember/
+
+# 建置時由 build_html.py 自動下載（不需版控）
+libs/
+
+# 產生的試算表
+*.xlsx
+zhonglian_360.pdf
+
+# 註：已部署產物仍納入版控：
+#   index.html、og.png、中聯油脂_下游業者互動地圖.html
